@@ -32,7 +32,6 @@ function checkWin(board) {
             return wrapItUp('TIE');       
         }
     
-
     return null;
 }
 
@@ -55,6 +54,25 @@ function markSquare(square) {
 function wrapItUp(winner) {
     console.log(winner + ' wins');
     setBoard();
+    cleanUpDom();
 }
 
 window.addEventListener('DOMContentLoaded', setBoard);
+
+document.querySelectorAll('.grid-item').forEach(button => {
+    button.addEventListener('click', () => {
+        markSquare(Number(button.dataset.label));
+        console.log(Number(button.dataset.label));
+        button.innerHTML = !bool ? `<img src="/assets/x.svg">` 
+        : `<img src="/assets/o.svg">`;
+    })
+})
+
+function cleanUpDom() {
+    setTimeout(() => {
+        document.querySelectorAll('.grid-item').forEach(button => {
+            button.innerHTML = '';
+        })
+    }, 0)
+    
+}

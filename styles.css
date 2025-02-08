@@ -2,3 +2,66 @@
     margin: 0;
     padding: 0;
 }
+
+body {
+    width: 100vw;
+    height: 100dvh;
+    max-width: 100%;
+    display: grid;
+    place-items: center;
+}
+
+#game {
+    border: 1px solid black;
+    width: 400px;
+    height: calc(100% - 200px);
+    display: grid;
+    grid-template-rows: 1fr 3fr 1fr;
+   
+}
+
+#board-container {
+    display: grid;
+    place-items: center;
+    position: relative;  
+
+    img {
+        position: absolute;
+        width: 70%;
+        z-index: -1;
+    }
+}
+
+#board-buttons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+
+    img {
+        width: 50px;
+        z-index: 1;
+    }
+}
+
+.grid-item {
+    width: 75px;
+    height: 75px;
+    border: none;
+    background: none;
+    cursor: pointer;
+
+    display: grid;
+    place-items: center;
+}
+
+.player {
+    width: 50%;
+    display: grid;
+    justify-self: center;
+    place-items: center;
+
+    img {
+        width: 25%;
+    }
+}
+
