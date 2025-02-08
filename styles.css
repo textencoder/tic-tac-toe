@@ -13,11 +13,13 @@ body {
 
 #game {
     border: 1px solid black;
-    width: 400px;
-    height: calc(100% - 200px);
+    border-radius: 10px;
+    width: calc(100% - 50px);
+    max-width: 400px;
+    height: calc(100% - 100px);
+    max-height: 700px;
     display: grid;
     grid-template-rows: 1fr 3fr 1fr;
-   
 }
 
 #board-container {
