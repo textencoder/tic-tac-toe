@@ -1,3 +1,7 @@
+const startContainer = document.getElementById('start-container');
+const boardContainer = document.getElementById('board-container');
+
+
 let board = [];
 let bool = false;
 
@@ -57,7 +61,7 @@ function wrapItUp(winner) {
     cleanUpDom();
 }
 
-window.addEventListener('DOMContentLoaded', setBoard);
+window.addEventListener('DOMContentLoaded', intermission);
 
 document.querySelectorAll('.grid-item').forEach(button => {
     button.addEventListener('click', () => {
@@ -74,5 +78,18 @@ function cleanUpDom() {
             button.innerHTML = '';
         })
     }, 0)
-    
+    intermission();
 }
+
+function intermission() {
+    startContainer.style.display = 'grid';
+    boardContainer.style.display = 'none';
+}
+
+function newGame() {
+    setBoard();
+    startContainer.style.display = 'none';
+    boardContainer.style.display = 'grid';
+}
+
+document.querySelector('#start-container button').addEventListener('click', newGame)
