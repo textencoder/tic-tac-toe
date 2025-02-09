@@ -67,8 +67,8 @@ document.querySelectorAll('.grid-item').forEach(button => {
     button.addEventListener('click', () => {
         markSquare(Number(button.dataset.label));
         console.log(Number(button.dataset.label));
-        button.innerHTML = !bool ? `<img src="/assets/x.svg">` 
-        : `<img src="/assets/o.svg">`;
+        button.innerHTML = !bool ? `<img src="./assets/x.svg">` 
+        : `<img src="./assets/o.svg">`;
     })
 })
 
