@@ -28,11 +28,14 @@ body {
   place-items: center;
   position: relative;
 
-  img {
-    position: absolute;
-    width: 70%;
-    z-index: -1;
-  }
+  
+}
+
+#board-img {
+  position: absolute;
+  width: 70%;
+  min-width: 275px;
+  z-index: -1;
 }
 
 #board-buttons {
