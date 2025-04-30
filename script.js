@@ -122,6 +122,7 @@ function cleanUpDom() {
     setTimeout(() => {
         document.querySelectorAll('.grid-item').forEach(button => {
             button.innerHTML = '';
+            button.style.background = "none";
         })
     }, 0)
     intermission();
