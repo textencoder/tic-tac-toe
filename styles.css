@@ -9,10 +9,11 @@ body {
   max-width: 100%;
   display: grid;
   place-items: center;
+  background-color: hsl(0, 0%, 10%);
 }
 
 #game {
-  border: 1px solid rgb(200, 200, 200);
+  /* border: 1px solid rgb(200, 200, 200); */
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   width: calc(100% - 50px);
@@ -27,8 +28,8 @@ body {
   display: grid;
   place-items: center;
   position: relative;
-
-  
+  border: 1px solid lawngreen;
+  border-radius: 10px;
 }
 
 #board-img {
@@ -78,9 +79,9 @@ body {
   button {
     width: 45%;
     height: 15%;
-    border: 1px solid black;
+    border: 1px solid white;
     background: none;
-    color: black;
+    color: white;
     cursor: pointer;
     border-radius: 50px;
     font-family: "kade", sans-serif;
@@ -92,8 +93,8 @@ body {
   }
 
   button:hover {
-    background: black;
-    color: white;
+    background: white;
+    color: black;
   }
 }
 

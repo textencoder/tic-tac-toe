@@ -3,7 +3,11 @@ const boardContainer = document.getElementById('board-container');
 
 
 let board = [];
-let bool = false;
+let turn = "x";
+let win = false;
+
+let xMoves = [];
+let oMoves = [];
 
 const setBoard = function() { 
         board = [];     
@@ -46,17 +50,47 @@ function markSquare(square) {
     : square; 
 
     if (board[indexOne - 1][indexTwo - 1] == null) {
-        board[indexOne - 1][indexTwo - 1] = bool ? 'x' : 'o';
-        bool = !bool;
+        board[indexOne - 1][indexTwo - 1] = turn == "x" ? 'x' : 'o';
+        //turn = board[indexOne - 1][indexTwo - 1] == "x" ? "o" : "x";
     } else {
         throw new Error('space already contains value');
     }
     
+    console.log(board)
+    trackMoves([indexOne - 1, indexTwo - 1, square - 1])
+    
     checkWin(board);
+}
+
+function trackMoves(move) {
+
+    if (turn == "x") {
+        if (xMoves.length == 3) {
+            let removed = xMoves.shift()
+            console.log(removed)
+            board[removed[0]][removed[1]] = null;
+            console.log(xMoves)
+            document.querySelectorAll('.grid-item')[removed[2]].innerHTML = "";
+        }
+        xMoves.push(move)
+    } else {
+        if (oMoves.length == 3) {
+            let removed = oMoves.shift()
+            console.log(removed)
+            board[removed[0]][removed[1]] = null;
+            console.log(oMoves)
+            document.querySelectorAll('.grid-item')[removed[2]].innerHTML = "";
+        }
+        oMoves.push(move)
+    }
+
 }
 
 function wrapItUp(winner) {
     console.log(winner + ' wins');
+    turn = winner;
+    console.log("new game - turn: ", turn)
+    win = true;
     setBoard();
     cleanUpDom();
 }
@@ -67,8 +101,12 @@ document.querySelectorAll('.grid-item').forEach(button => {
     button.addEventListener('click', () => {
         markSquare(Number(button.dataset.label));
         console.log(Number(button.dataset.label));
-        button.innerHTML = !bool ? `<img src="./assets/x.svg">` 
+        button.innerHTML = turn == "x" ? `<img src="./assets/x.svg">` 
         : `<img src="./assets/o.svg">`;
+        if (!win) {
+            turn = turn == "x" ? "o" : "x";
+            console.log("turn: ", turn)
+        }
     })
 })
 
@@ -87,6 +125,7 @@ function intermission() {
 }
 
 function newGame() {
+    win = false;
     setBoard();
     startContainer.style.display = 'none';
     boardContainer.style.display = 'grid';
