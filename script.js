@@ -99,6 +99,8 @@ function wrapItUp(winner) {
     turn = winner;
     console.log("new game - turn: ", turn)
     win = true;
+    xMoves = [];
+    oMoves = [];
     setBoard();
     cleanUpDom();
 }
