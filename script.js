@@ -71,6 +71,10 @@ function trackMoves(move) {
             board[removed[0]][removed[1]] = null;
             console.log(xMoves)
             document.querySelectorAll('.grid-item')[removed[2]].innerHTML = "";
+            document.querySelectorAll('.grid-item')[removed[2]].style.background = "none"
+        }
+        if (oMoves.length == 3) {
+            document.querySelectorAll('.grid-item')[oMoves[0][2]].style.background = "grey"
         }
         xMoves.push(move)
     } else {
@@ -80,6 +84,10 @@ function trackMoves(move) {
             board[removed[0]][removed[1]] = null;
             console.log(oMoves)
             document.querySelectorAll('.grid-item')[removed[2]].innerHTML = "";
+            document.querySelectorAll('.grid-item')[removed[2]].style.background = "none"
+        }
+        if (xMoves.length == 3) {
+            document.querySelectorAll('.grid-item')[xMoves[0][2]].style.background = "grey"
         }
         oMoves.push(move)
     }
